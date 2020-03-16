@@ -1,0 +1,47 @@
+<html xmlns:th="https://www.thymeleaf.org">
+	<div th:replace="fragment/header :: header">
+	
+	</div>
+	<div class="container">
+		<h3 style="margin-top: 10px"> 
+			Add New Account
+		</h3>
+		<form th:action="@{/account/addaccount}" th:object="${account}" method="post">
+			<div class="row">
+				<div class="form-group col-md-12">
+				  	<label>Customer</label>
+				 	<select required th:field="*{customer.customerId}" class="form-control">
+				 		<option th:each="customer, iter: ${customers}" th:value="${customer.customerId}" th:text="${customer.customerNumber} + ' - ' + ${customer.getFullName()}" />
+				 	</select>
+				 </div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label th:if="${#fields.hasErrors('accountNumber')}" th:errors="*{accountNumber}">Error Account Number</label>
+				    <label for="customernumber">Account Number</label>
+				    <input required type="text" class="form-control" id="accountNumber" th:field="*{accountNumber}" th:value="*{accountNumber}">
+				 </div>			
+			 </div>
+			 <div class="row">
+				<div class="form-group col-md-12">
+				  	<label>Account Type</label>
+				 	<select required th:field="*{accountType.accountTypeId}" class="form-control">
+				 		<option th:each="accountType, iter: ${accounttypes}" th:value="${accountType.accountTypeId}" th:text="${accountType.accountTypeName}" />
+				 	</select>
+				 </div>
+			</div>
+			 <div class="row">
+			 	<div class="form-group col-md-12">
+				 	<label th:if="${#fields.hasErrors('balance')}" th:errors="*{balance}">Error Balance</label>
+				    <label for="balance">Balance (in US dollar and Center)</label>
+				    <input step="0.01" required type="number" class="form-control" id="balance" th:field="*{balance}" th:value="*{balance}">
+				 </div>
+			  </div>
+			  <div class="row">
+			  	<div class="form-group col-md-4">
+					<button type="submit" class="btn btn-primary">Create Account</button>
+				  </div>
+			  </div>
+		</form>
+	</div>
+</html>

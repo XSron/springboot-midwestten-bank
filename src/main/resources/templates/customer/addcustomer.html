@@ -1,0 +1,58 @@
+<html xmlns:th="https://www.thymeleaf.org">
+	<div th:replace="fragment/header :: header">
+	
+	</div>
+	<div class="container">
+		<h3 style="margin-top: 10px"> 
+			Add New Customer
+		</h3>
+		<form th:action="@{/customer/addcustomer}" th:object="${customer}" method="post">
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label th:if="${#fields.hasErrors('customerNumber')}" th:errors="*{customerNumber}">Error Customer Number</label>
+				    <label for="customernumber">Customer Number</label>
+				    <input type="text" required class="form-control" id="customernumber" th:field="*{customerNumber}" th:value="*{customerNumber}">
+				 </div>			
+			 </div>
+			 <div class="row">
+			 	<div class="form-group col-md-4">
+				 	<label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Error First Name</label>
+				    <label for="firstname">First Name</label>
+				    <input type="text" required class="form-control" id="firstname" th:field="*{firstName}" th:value="*{firstName}">
+				 </div>
+				 <div class="form-group col-md-4">
+				 	<label th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}">Error Middle Name</label>
+				    <label for="middlename">Middle Name</label>
+				    <input type="text" class="form-control" id="middlename" th:field="*{middleName}" th:value="*{middleName}">
+				 </div>
+				 <div class="form-group col-md-4">
+				 	<label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Error Last Name</label>
+				    <label for="middlename">Last Name</label>
+				    <input type="text" required class="form-control" id="lastname" th:field="*{lastName}" th:value="*{lastName}">
+				 </div>
+			  </div>
+			  <div class="row">
+			  	<div class="form-group col-md-4">
+				 	<label th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}">Error Email Address</label>
+				    <label for="emailaddress">Email Address</label>
+				    <input type="email" required class="form-control" id="emailaddress" th:field="*{emailAddress}" th:value="*{emailAddress}">
+				 </div>
+				 <div class="form-group col-md-4">
+				 	<label th:if="${#fields.hasErrors('contactPhoneNumber')}" th:errors="*{contactPhoneNumber}">Error Contact Number</label>
+				    <label for="contactPhoneNumber">Contact Number</label>
+				    <input type="text" class="form-control" id="contactNumber" th:field="*{contactPhoneNumber}" th:value="*{contactPhoneNumber}">
+				 </div>
+				 <div class="form-group col-md-4">
+				 	<label th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">Error Date of Birth</label>
+				    <label for="dateofbirth">Date of Birth</label>
+				    <input type="date" required class="form-control" id="dateofbirth" th:field="*{dateOfBirth}" th:value="*{dateOfBirth}">
+				 </div>
+			  </div>
+			  <div class="row">
+			  	<div class="form-group col-md-4">
+					<button type="submit" class="btn btn-primary">Register New Customer</button>
+				  </div>
+			  </div>
+		</form>
+	</div>
+</html>
